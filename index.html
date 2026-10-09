@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Gestión de pedidos de papelería y suministros de oficina.">
+    <title>Pedidos Pro · Control comercial</title>
+    <link rel="stylesheet" href="css/pedidos-pro.css">
+    <script defer src="js/pedidos-pro-datos.js"></script>
+    <script defer src="js/pedidos-pro-excel.js"></script><script defer src="js/pedidos-pro.js"></script>
+</head>
+
+<body>
+    <aside><a class="brand" href="#resumen"><b>p.</b> pedidos<span>pro</span></a>
+        <p class="eyebrow nav-label">ESPACIO DE TRABAJO</p>
+        <nav aria-label="Navegación principal">
+            <a href="#resumen"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Resumen</a>
+            <a href="#pedidos"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Pedidos</a>
+            <a href="#reportes"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v17h17M9 16v-5M14 16V6M19 16V9"/></svg>Reportes</a>
+        </nav>
+        <div class="sidebar-bottom"><strong>Datos de ejemplo</strong>
+            <button id="reset"
+                class="text-button">Restablecer datos ↺</button>
+            <div class="profile">DN <span>Daniel Nazar<small>Administración comercial</small></span></div>
+        </div>
+    </aside>
+    <main>
+        <header><span>Espacio comercial / <strong id="breadcrumb">Resumen</strong></span><span>Papelera Norte · Suministros de oficina</span></header>
+        <div class="content">
+            <div class="page-heading">
+                <div>
+                    <p class="eyebrow">CONTROL COMERCIAL</p>
+                    <h1 id="title">Resumen · últimos 30 días</h1>
+                    <p id="description" class="muted">Cotizaciones, pedidos y recepciones del periodo.</p>
+                </div><button class="primary" id="new-order">＋ Nueva cotización</button>
+            </div>
+            <p class="demo-banner">Datos de ejemplo · Importes en MXN, IVA incluido · Guardado local.</p>
+            <p id="storage-warning" class="warning" hidden></p>
+            <div id="view"></div>
+            <footer>Pedidos Pro <span>Control comercial</span></footer>
+        </div>
+    </main>
+    <dialog id="order-dialog">
+        <form id="order-form">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">NUEVO PEDIDO</p>
+                    <h2>Crear cotización</h2>
+                </div><button type="button" class="close secondary" aria-label="Cerrar">×</button>
+            </div>
+            <p class="muted">Captura el cliente, los productos y la fecha de entrega.</p>
+            <div class="form-grid"><label>Cliente<input name="client" required maxlength="90"
+                        placeholder="Nombre de la empresa"></label><label>Fecha de entrega<input name="due" type="date"
+                        required></label></div>
+            <div class="section-heading">
+                <h3>Productos</h3><button type="button" class="secondary" id="add-line">＋ Agregar producto</button>
+            </div>
+            <div id="lines"></div><label>Notas<textarea name="notes" maxlength="600" rows="3"
+                    placeholder="Instrucciones de entrega"></textarea></label>
+            <div class="form-total"><span>Total cotizado · IVA incluido</span><strong id="form-total">$0.00</strong>
+            </div>
+            <p id="form-error" class="warning" role="alert"></p>
+            <div class="modal-actions"><button type="button" class="secondary close">Cancelar</button><button
+                    class="primary">Crear cotización</button></div>
+        </form>
+    </dialog>
+    <dialog id="detail-dialog"></dialog>
+    <dialog id="reset-dialog">
+        <h2>¿Restablecer los datos de ejemplo?</h2>
+        <p>Se eliminarán tus cotizaciones y cambios de este navegador.</p>
+        <div class="modal-actions"><button class="secondary" id="cancel-reset">Cancelar</button><button class="primary"
+                id="confirm-reset">Restablecer</button></div>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+</body>
+
+</html>
+
+
